@@ -1,38 +1,45 @@
 <footer class="site-footer">
 
-  <div class="wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="footer-heading">This is a footer.</h2>
+                    </div>
+                </div>
 
-    <h2 class="footer-heading">This is a footer.</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <ul class="contact-list">
+                            <li>Feel free to drop me a line at:</li>
+                            <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+                        </ul>
+                    </div>
 
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li>Feel free to drop me a line at:</li>
-          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-        </ul>
-      </div>
+                    <div class="col-md-4">
+                        <ul class="social-media-list">
+                            {% if site.github_username %}
+                            <li>
+                                {% include icon-github.html username=site.github_username %}
+                            </li>
+                            {% endif %}
 
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          {% if site.github_username %}
-          <li>
-            {% include icon-github.html username=site.github_username %}
-          </li>
-          {% endif %}
+                            {% if site.twitter_username %}
+                            <li>
+                                {% include icon-twitter.html username=site.twitter_username %}
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
 
-          {% if site.twitter_username %}
-          <li>
-            {% include icon-twitter.html username=site.twitter_username %}
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>{{ site.description }}</p>
-      </div>
+                    <div class="col-md-4">
+                        <p>{{ site.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-  </div>
+    </div>
 
 </footer>
