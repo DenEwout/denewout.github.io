@@ -2,6 +2,11 @@
  * Site header
  */
 header {
+
+  .navbar{
+    border-bottom: 1px solid #c4c4c4;
+  }
+
   .navbar-header {
     button {
       float: left;
@@ -21,6 +26,10 @@ header {
 
 .navbar-brand {
   font-size: 21pt;
+}
+
+h1{
+  font-size: 42px;
 }
 
 /**
@@ -130,7 +139,6 @@ header {
 }
 
 .post-title {
-  font-size: 42px;
   letter-spacing: -1px;
   line-height: 1;
 

@@ -9,8 +9,53 @@
 
 <div id="wrap" class="container-fluid">
     <div class="row">
-        <div class="content col-md-6 col-md-offset-3">
+        <div class="content col-md-5 col-md-offset-3">
             {{ content }}
+        </div>
+        <div class="content col-md-4">
+            <h2>Archive</h2>
+            <ul>
+                {% assign currentYear = site.time | date: "%Y" %}
+                {% assign currentMonth = site.time | date: "%B" %}
+                {% for post in site.posts %}
+
+                    {% assign postYear = post.date | date: "%Y" %}
+                    {% assign postMonth = post.date  | date: "%B" %}
+
+                    {% if forloop.first %}
+                    <li><a role="button" data-toggle="collapse" href="#collapse{{ postYear }}" aria-expanded="true" aria-controls="collapse{{ postYear }}">{{ postYear}}</a>
+                        <ul class="collapse" id="collapse{{ postYear }}">
+                            <li><a role="button" data-toggle="collapse" href="#collapse{{ postYear }}{{ postMonth }}" aria-expanded="true" aria-controls="collapse{{ postYear }}{{ postMonth}}">{{ postMonth}}</a>
+                                <ul class="collapse" id="collapse{{ postYear }}{{ postMonth }}">
+                                        <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
+                        {% assign currentYear = postYear %}
+                        {% assign currentMonth = postMonth %}
+                        {% continue %}
+                    {% endif %}
+
+                    {% if postYear == currentYear and postMonth == currentMonth %}
+                        <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
+                    {% endif %}
+
+                    {% if postYear == currentYear and postMonth != currentMonth %}
+                        </ul></li>
+                            <li><a role="button" data-toggle="collapse" href="#collapse{{ postYear }}{{ postMonth }}" aria-expanded="false" aria-controls="collapse{{ postYear }}{{ postMonth}}">{{ postMonth}}</a>
+                                <ul class="collapse" id="collapse{{ postYear }}{{ postMonth }}">
+                                <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
+                    {% endif %}
+
+                    {% if postYear != currentYear and postMonth != currentMonth %}
+                        </ul></li></ul></li>
+                        <li><a role="button" data-toggle="collapse" href="#collapse{{ postYear }}" aria-expanded="false" aria-controls="collapse{{ postYear }}">{{ postYear}}</a>
+                            <ul class="collapse" id="collapse{{ postYear }}">
+                                <li><a role="button" data-toggle="collapse" href="#collapse{{ postYear }}{{ postMonth }}" aria-expanded="false" aria-controls="collapse{{ postYear }}{{ postMonth}}">{{ postMonth}}</a>
+                                    <ul class="collapse" id="collapse{{ postYear }}{{ postMonth }}">
+                                        <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
+                    {% endif %}
+                    {% assign currentYear = postYear %}
+                    {% assign currentMonth = postMonth %}
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>
