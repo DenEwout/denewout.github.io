@@ -11,6 +11,7 @@ email: blog@ewoutvangossum.be
 description: This is my personal blog. I write about programming stuff here.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://denewout.github.io" # the base hostname & protocol for your site
+comments: true
 twitter_username: DenEwout
 github_username:  DenEwout
 
